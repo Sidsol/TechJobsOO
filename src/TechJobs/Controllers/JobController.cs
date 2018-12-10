@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TechJobs.Data;
+using TechJobs.Models;
 using TechJobs.ViewModels;
 
 namespace TechJobs.Controllers
@@ -20,10 +21,13 @@ namespace TechJobs.Controllers
         {
             // TODO #1 - get the Job with the given ID and pass it into the view
 
-            return View();
+            Job someJob = new Job();
+                someJob = jobData.Find(id);
+
+            return View(someJob);
         }
 
-        public IActionResult New()
+        public IActionResult New() 
         {
             NewJobViewModel newJobViewModel = new NewJobViewModel();
             return View(newJobViewModel);
